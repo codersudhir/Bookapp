@@ -11,24 +11,38 @@ const Results = () => {
   const title=searchParams.get("title")
   const [updatevalue,setupdatevalue]=useState("")
   const [postId,setPostId]=useState("")
+  const [sorteddata,setsorteddata]=useState([])
 
   const HandleEdititem=async(id)=>{
     const res = await axios.put(`http://68.178.162.203:8080/application-test-v1.1/books/${id}`, {
       title: updatevalue,
     });
     if (res?.status==200) {
-      toast('🦄 Wow so easy!', {
-        position: "top-right",
-        autoClose: 111,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        });
+      alert("posts updated successfully")
+      // toast('🦄 Wow so easy!', {
+      //   position: "top-right",
+      //   autoClose: 111,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "colored",
+      //   });
+        
     }
       }
+const HandleAscending=async()=>{
+  const sortedNumbersAsc = data?.bookReducer?.products.sort((a, b) => a.year - b.year);
+setsorteddata(sortedNumbersAsc);
+}
+
+const HandleDeacending=async()=>{
+  const sortedNumbersdsc = data?.bookReducer?.products.sort((a, b) => b.year - a.year);
+setsorteddata(sortedNumbersdsc);
+}
+
+
   const Pagination = ({ pageCount }) => {
    
     const pages = [];
@@ -41,6 +55,7 @@ const Results = () => {
             backgroundColor: page == i ? "#0195F7" : "white",
             borderRadius: "50%",
             cursor: "pointer",
+            color:page == i ? "white" : "black"
           }}
           className="px-3 py-2"
           key={i}
@@ -62,11 +77,16 @@ const Results = () => {
 
   return (
     <>
+    <div className='d-flex justify-content-center gap-2 my-3'>
+    <button type="button" class="btn btn-primary" onClick={HandleAscending}>Ascending</button>
+<button type="button" class="btn btn-secondary" onClick={HandleDeacending}>Decending</button>
+
+  </div>
     
     {data?.bookReducer?.isLoading &&<div className="loader mx-auto"></div>}
      <ul class="list-group w-75 mx-auto">
 
- {data?.bookReducer?.products?.map((item,index)=>{
+    { data?.bookReducer?.products?.map((item,index)=>{
  
   return  <li class="list-group-item d-flex justify-content-between " key={index}>{ item.title} 
    

@@ -27,9 +27,11 @@ const Searchbar = () => {
   };
 
 const HandleAddBook=async()=>{
-console.log(add);
  let response=await axios.post("http://68.178.162.203:8080/application-test-v1.1/books",add)
- console.log(response.status==200);
+ if(response.status==200){
+  alert("Book added successfully")
+  window.location.reload()
+ }
 }
 
 
@@ -68,33 +70,40 @@ console.log(add);
       </div>
       <div class="modal-body">
       <form>
-  <div class="mb-1">
+<div className='d-flex gap-2'>
+<div class="w-50">
     <label for="exampleInputEmail1" class="form-label">Title</label>
     <input type="text" class="form-control" onChange={(e)=>setadd({...add,title:e.target.value})} />
   
   </div>
-  <div class="mb-1">
+  <div class="w-50">
     <label for="exampleInputPassword1" class="form-label">Auther</label>
     <input type="text" class="form-control" onChange={(e)=>setadd({...add,author:e.target.value})} />
   </div>
-  <div class="mb-1">
+</div>
+<div className='d-flex gap-2'>
+<div class="w-50">
     <label for="exampleInputEmail1" class="form-label">Country</label>
     <input type="text" class="form-control" onChange={(e)=>setadd({...add,country:e.target.value})} />
   
   </div>
-  <div class="mb-1">
+  <div class="w-50">
     <label for="exampleInputPassword1" class="form-label">Language</label>
     <input type="text" class="form-control" onChange={(e)=>setadd({...add,language:e.target.value})} />
   </div>
-  <div class="mb-1">
+</div>
+<div className='d-flex gap-2'>
+<div class="w-50">
     <label for="exampleInputPassword1" class="form-label">Link</label>
     <input type="text" class="form-control" onChange={(e)=>setadd({...add,link:e.target.value})} />
   </div>
-  <div class="mb-1">
+  <div class="w-50">
     <label for="exampleInputEmail1" class="form-label">Pages</label>
     <input type="number" class="form-control" onChange={(e)=>setadd({...add,pages:e.target.value})} />
   
   </div>
+</div>
+ 
   <div >
     <label for="exampleInputPassword1" class="form-label">Year</label>
     <input type="number" class="form-control" onChange={(e)=>setadd({...add,year:e.target.value})} />
