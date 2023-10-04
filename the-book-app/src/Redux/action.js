@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_BOOKS, GET_BOOKS_ERROR, GET_BOOKS_LOADING } from "./actiontypes";
+import { GET_BOOKS, GET_BOOKS_ERROR, GET_BOOKS_LOADING } from "./reducer";
 
 
 export const getProducts =async (dispatch,params,page) => {

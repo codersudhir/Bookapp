@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux'
 
-import { reducer as bookReducer } from './reducer'
+import { Reducer as bookReducer } from './reducer'
 import thunk from 'redux-thunk'
 const rootReducer = combineReducers({
     bookReducer,

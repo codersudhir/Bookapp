@@ -1,4 +1,6 @@
-import { GET_BOOKS, GET_BOOKS_ERROR, GET_BOOKS_LOADING } from "./actiontypes";
+export const GET_BOOKS = 'books/get_books';
+export const GET_BOOKS_LOADING = 'books/get_Books_loading';
+export const GET_BOOKS_ERROR = 'books/get_books_error';
 
 const initialState = {
   products: [],
@@ -6,7 +8,7 @@ const initialState = {
   isError: false,
   totalCount: 0,
 };
-const reducer = (state = initialState, action) => {
+const Reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -26,4 +28,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export { reducer };
+export { Reducer };
