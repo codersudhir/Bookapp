@@ -30,7 +30,7 @@ const HandleAddBook=async()=>{
  let response=await axios.post("http://68.178.162.203:8080/application-test-v1.1/books",add)
  if(response.status==200){
   alert("Book added successfully")
-  window.location.reload()
+  window.location.href = '/';
  }
 }
 

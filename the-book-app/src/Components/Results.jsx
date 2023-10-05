@@ -19,6 +19,7 @@ const Results = () => {
     });
     if (res?.status==200) {
       alert("posts updated successfully")
+      window.location.href = '/';
       // toast('🦄 Wow so easy!', {
       //   position: "top-right",
       //   autoClose: 111,
@@ -32,15 +33,15 @@ const Results = () => {
         
     }
       }
-const HandleAscending=async()=>{
-  const sortedNumbersAsc = data?.bookReducer?.products.sort((a, b) => a.year - b.year);
-setsorteddata(sortedNumbersAsc);
-}
+// const HandleAscending=async()=>{
+//   const sortedNumbersAsc = data?.bookReducer?.products.sort((a, b) => a.year - b.year);
+// setsorteddata(sortedNumbersAsc);
+// }
 
-const HandleDeacending=async()=>{
-  const sortedNumbersdsc = data?.bookReducer?.products.sort((a, b) => b.year - a.year);
-setsorteddata(sortedNumbersdsc);
-}
+// const HandleDeacending=async()=>{
+//   const sortedNumbersdsc = data?.bookReducer?.products.sort((a, b) => b.year - a.year);
+// setsorteddata(sortedNumbersdsc);
+// }
 
 
   const Pagination = ({ pageCount }) => {
@@ -77,11 +78,7 @@ setsorteddata(sortedNumbersdsc);
 
   return (
     <>
-    <div className='d-flex justify-content-center gap-2 my-3'>
-    <button type="button" class="btn btn-primary" onClick={HandleAscending}>Ascending</button>
-<button type="button" class="btn btn-secondary" onClick={HandleDeacending}>Decending</button>
-
-  </div>
+   
     
     {data?.bookReducer?.isLoading &&<div className="loader mx-auto"></div>}
      <ul class="list-group w-75 mx-auto">
